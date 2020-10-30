@@ -1,0 +1,19 @@
+How can I download a specific folder or directory from a remote Git repo hosted on GitHub? 
+
+If you are willing to use git to do this, you can do a sparse checkout.
+
+We are going to start by creating an empty git repo locally, and then add the repository we want as a remote. This allows us to easily just checkout the folder we want
+
+mkdir directoryName
+cd directoryName
+git init
+git remote add origin -f repoUrl
+After that, we want to add the directory to 
+
+.git/info/sparse-checkout
+(this is essentially the opposite of the gitignore file).
+
+Then we can 
+
+git pull origin master
+and it should download only the folder you want. 
